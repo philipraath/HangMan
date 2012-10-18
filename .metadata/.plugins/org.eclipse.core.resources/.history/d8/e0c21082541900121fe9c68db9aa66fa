@@ -31,7 +31,7 @@ public class HangmanGUI implements HangmanUIInterface
     {
     	HangmanUIInterface UI = new HangmanGUI();
     	UIManager manager = new UIManager();
-    	UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+    	manager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
     	UI.displayWelcome();
 
     }

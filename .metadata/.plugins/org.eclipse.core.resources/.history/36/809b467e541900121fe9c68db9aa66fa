@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 /**
  * Write a description of class HangmanUI here.
  * 
@@ -27,11 +26,11 @@ public class HangmanGUI implements HangmanUIInterface
         
     }
     
-    public static void main (String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException
+    public static void main (String[] args)
     {
     	HangmanUIInterface UI = new HangmanGUI();
     	UIManager manager = new UIManager();
-    	UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+    	manager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
     	UI.displayWelcome();
 
     }

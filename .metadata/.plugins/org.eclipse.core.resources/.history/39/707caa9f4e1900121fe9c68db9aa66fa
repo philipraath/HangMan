@@ -7,8 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 /**
  * Write a description of class HangmanUI here.
  * 
@@ -27,11 +25,9 @@ public class HangmanGUI implements HangmanUIInterface
         
     }
     
-    public static void main (String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException
+    public static void main (String[] args)
     {
     	HangmanUIInterface UI = new HangmanGUI();
-    	UIManager manager = new UIManager();
-    	UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
     	UI.displayWelcome();
 
     }
@@ -198,7 +194,8 @@ public class HangmanGUI implements HangmanUIInterface
 	@Override
 	public void display(String textToDisplay) {
 		JOptionPane userInterface = new JOptionPane();
-		JOptionPane.showMessageDialog(userInterface, textToDisplay);
+		userInterface.add(new JLabel(textToDisplay));
+		userInterface.pack();
 		userInterface.setVisible(true);
 	}
 }
