@@ -99,5 +99,6 @@ public class HangmanUITest
         assert(Boolean.valueOf(hangUI.askNewGame()) instanceof Boolean);
         assertEquals(true, hangUI.askNewGame());
     }
+
 }
 

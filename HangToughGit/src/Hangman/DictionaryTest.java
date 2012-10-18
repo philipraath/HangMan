@@ -24,7 +24,6 @@ public class DictionaryTest {
 		validWordSet.add("fired");
 		validWordSet.add("chair");
 		validWordSet.add("locus");
-		
 		longestWordSet = new TreeSet<String>();
 		longestWordSet.add("a");
 		longestWordSet.add("aa");

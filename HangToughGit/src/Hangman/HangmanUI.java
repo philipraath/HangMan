@@ -31,7 +31,7 @@ public class HangmanUI implements HangmanUIInterface
      * Displays welcome message.
      */
     public void displayWelcome(){
-    	System.out.println("Welcome to Hangman!!!***Exciting!!!***Exclamation marks!!!!");
+    	display("Welcome to Hangman!!!***Exciting!!!***Exclamation marks!!!!");
     }
     
     @Override
@@ -61,7 +61,7 @@ public class HangmanUI implements HangmanUIInterface
      */
     public int askGuessLimit()
     {
-        System.out.println("Please enter the number of guesses allowed: ");
+        display("Please enter the number of guesses allowed: ");
         int guessLimit = scanner.nextInt();
         return guessLimit;
     }
@@ -75,10 +75,10 @@ public class HangmanUI implements HangmanUIInterface
     public int askWordLength()
     {
     	int wordLength = 0;
-    	System.out.println("Please enter the desired length of word: ");
+    	display("Please enter the desired length of word: ");
     	wordLength = scanner.nextInt();
     	while(wordLength<2 || wordLength>20) {
-    		System.out.println("Please be sure to choose a length between 2 and 20 or be faced with this message again!");
+    		display("Please be sure to choose a length between 2 and 20 or be faced with this message again!");
     		askWordLength();
     	}
         return wordLength;
@@ -95,9 +95,9 @@ public class HangmanUI implements HangmanUIInterface
      */
     public void displayCurrentState(int numberOfGuessesRemaining, Set<Character> previousGuesses, ArrayList<Character> currentPattern)
     {
-    	System.out.println("Guesses remaining: " + numberOfGuessesRemaining);
-    	System.out.println("Previous guesses:" + previousGuesses.toString());
-    	System.out.println("Current: " + currentPattern.toString() );
+    	display("Guesses remaining: " + numberOfGuessesRemaining);
+    	display("Previous guesses:" + previousGuesses.toString());
+    	display("Current: " + currentPattern.toString() );
     }
     
     @Override
@@ -107,7 +107,7 @@ public class HangmanUI implements HangmanUIInterface
      */
     public void displayCorrectGuess(char currentGuess)
     {
-    	System.out.println("You have chosen wisely!!! There is at least one " + currentGuess + ".");
+    	display("You have chosen wisely!!! There is at least one " + currentGuess + ".");
     }
     
     @Override
@@ -117,7 +117,7 @@ public class HangmanUI implements HangmanUIInterface
      */
     public void displayIncorrectGuess(char currentGuess)
     {
-    	System.out.println("You have chosen poorly!!! There are no " + currentGuess + "'s.");
+    	display("You have chosen poorly!!! There are no " + currentGuess + "'s.");
     }
     
     @Override
@@ -127,7 +127,7 @@ public class HangmanUI implements HangmanUIInterface
      */
     public void displayAnswer(String correctAnswer)
     {
-    	System.out.println("The correct answer was: " + correctAnswer + ".");
+    	display("The correct answer was: " + correctAnswer + ".");
     }
     
     @Override
@@ -136,7 +136,7 @@ public class HangmanUI implements HangmanUIInterface
      */
     public void displayWinMessage()
     {
-    	System.out.println("Congragulations! You win!");
+    	display("Congragulations! You win!");
     }
     
     @Override
@@ -145,12 +145,12 @@ public class HangmanUI implements HangmanUIInterface
      */
     public void displayLossMessage()
     {
-    	System.out.println("You. Lose. So. Sorry. Stop. Crying.");
+    	display("You. Lose. So. Sorry. Stop. Crying.");
     }
     
     public void displayAlreadyGuess(char previouslyGuessed)
     {
-    	System.out.println("You have already guessed " + previouslyGuessed + ".");
+    	display("You have already guessed " + previouslyGuessed + ".");
     }
     
     @Override
@@ -161,7 +161,7 @@ public class HangmanUI implements HangmanUIInterface
     public boolean askNewGame()
     {
     	InputStreamReader reader = new InputStreamReader(System.in);
-        System.out.println("Would you like to play another game? (Y or N)?: ");
+        display("Would you like to play another game? (Y or N)?: ");
         char[] charArray = new char[1];
         try {
 		reader.read(charArray);
@@ -172,7 +172,7 @@ public class HangmanUI implements HangmanUIInterface
         }     
         while(charArray[0]!='y' && charArray[0]!='Y' && charArray[0]!='n' && charArray[0]!='N')
         {
-        	System.out.println("Please restrict your response to 'y' for yes or 'n' for no!");
+        	display("Please restrict your response to 'y' for yes or 'n' for no!");
         	askNewGame();
         }
         if(charArray[0]=='y' || charArray[0]=='Y')
@@ -184,4 +184,9 @@ public class HangmanUI implements HangmanUIInterface
         	return false;
         }
     }
+
+	@Override
+	public void display(String textToDisplay) {
+		System.out.println(textToDisplay);
+	}
 }
