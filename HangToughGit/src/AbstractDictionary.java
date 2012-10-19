@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public abstract class AbstractDictionary implements DictionaryInterface {
@@ -36,6 +39,9 @@ public abstract class AbstractDictionary implements DictionaryInterface {
 	 * @return Set<String> new list of valid words
 	 */
 	public abstract Set<String> getLongestList(Set<String> validWordSet, char targetChar);
+	
+
+
 	
 	
 }

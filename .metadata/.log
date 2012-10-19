@@ -14,3 +14,6 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -data /Users/philraat
 
 !ENTRY org.eclipse.ui 2 2 2012-10-18 09:30:23.888
 !MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)
+
+!ENTRY org.eclipse.ui 4 4 2012-10-19 11:59:10.608
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.ProblemView.
