@@ -117,5 +117,10 @@ public abstract class AbstractHangmanUI implements HangmanUIInterface {
      */
     public abstract boolean askNewGame();
     
+    /**
+     * Tell user goodbye when exiting program.
+     */
+    public abstract void displayGoodbyeMessage();
+    
 
 }

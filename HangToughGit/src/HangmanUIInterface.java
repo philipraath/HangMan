@@ -83,4 +83,6 @@ public interface HangmanUIInterface
      */
     public boolean askNewGame();
     
+    public void displayGoodbyeMessage();
+    
 }

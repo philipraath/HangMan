@@ -181,4 +181,9 @@ public class HangmanTUI extends AbstractHangmanUI {
       	return false;
       }
   }
+
+@Override
+public void displayGoodbyeMessage() {
+	System.out.println("Ok. Goodbye.");
+}
 }
