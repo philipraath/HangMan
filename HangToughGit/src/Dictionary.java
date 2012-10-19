@@ -149,7 +149,7 @@ public class Dictionary extends AbstractDictionary {
             } 
             else
             { 
-                str.append( '_' ); 
+                str.append( '-' ); 
             } 
         } 
         return str.toString(); 
@@ -223,5 +223,32 @@ public class Dictionary extends AbstractDictionary {
 		// TODO Auto-generated method stub
 		return null;
 	} 
+	
+	@Override
+	public Set<String> newSortedSet(String currentPattern, Set<String> wordFromPattern, char currentGuess, Set<String> currentDictionary)
+	{
+		Set<String> longestSet = new TreeSet<String>();
+		Set<String> emptySet = new TreeSet<String>();
+		Map<String, Set<String>> patternTable = initializeHashtable(currentPattern, emptySet);
+		for(String word : currentDictionary){
+			String generatedPattern = generatePattern(currentGuess, word);
+			if(generatedPattern.equals(currentPattern)){
+				this.patternTable = addWord(word, currentPattern, patternTable);
+			}
+			else if(!(patternTable.keySet().contains(generatedPattern)))
+			{
+				Map<String, Set<String>> newKeyValuePair = newKeyValuePair(generatedPattern, word);
+				this.patternTable = addKeyValuePair(this.patternTable, newKeyValuePair);
+			}
+//			else
+//			{
+//				Set<String> newWord = new TreeSet<String>();
+//				newWord.add(word);
+//				this.patternTable = addWord(word, generatedPattern, patternTable);
+//			}
+		}
+		longestSet = findLongestList(patternTable);
+		return longestSet;
+	}
   
 } 

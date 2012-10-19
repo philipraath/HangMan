@@ -301,6 +301,18 @@ public class DictionaryTest {
     public void testNewSortedSet()
     {
     	Dictionary test = new Dictionary();
-    	String pattern = "----";
+    	String currentPattern = "-----";
+    	char currentGuess = 'a';
+    	Set<String> currentDictionary = validWordSet;
+    	Set<String> actualReturnedSet = test.newSortedSet(currentPattern, validWordSet, currentGuess, validWordSet);
+    	assertNotNull(actualReturnedSet);
+    	Set<String> expectedResult = new TreeSet<String>();
+    	expectedResult.add("chair");
+    	expectedResult.add("locus");
+    	expectedResult.add("trust");
+    	assertEquals(expectedResult, actualReturnedSet);
+    	actualReturnedSet = test.newSortedSet(currentPattern, validWordSet, currentGuess, longestWordSet);
+    	
+    	
     }
 } 

@@ -65,7 +65,9 @@ public interface DictionaryInterface {
 
 	Map<String, Set<String>> addKeyValuePair(
 			Map<String, Set<String>> patternTable,
-			Map<String, Set<String>> newKeyValuePair); 
+			Map<String, Set<String>> newKeyValuePair);
+
+	Set<String> newSortedSet(String currentPattern, Set<String> wordFromPattern, char currentGuess, Set<String> currentDictionary); 
 	
 	
 	
