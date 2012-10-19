@@ -22,7 +22,7 @@ public class HangmanController implements HangmanControllerInterface
     
 	public HangmanController()
     {
-    	userInterface = new HangmanTUI();
+    	userInterface = new HangmanGUI();
     	dictionary = new Dictionary();
     }
     

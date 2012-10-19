@@ -198,6 +198,29 @@ public class Dictionary extends AbstractDictionary {
         return tempTable;
     }
 
+    /** 
+     * Adds a String to a Set<String> referenced by a key parameter in the 
+     * Map<String, Set<String>> parameter.  
+     * @param newWord - String to be added to the Map<String, Set<String>> 
+     * @param key - String identifying the key that references the target Set<String> 
+     * @param patternTable - Map<String, Set<String>> to which the newWord will be added. 
+     * @return Map<String, Set<String>> - the updated patternTable 
+     */
+    @Override
+    public Map<String, Set<String>> addWord(String newWord,  
+                                            String key, 
+                                            Map<String, Set<String>> patternTable ) 
+    { 
+        patternTable.get( key ).add( newWord ); 
+        return patternTable; 
+    } 
+
+	@Override
+	public Map<String, ArrayList<String>> initializeHashtable(String pattern,
+			ArrayList<String> wordFromPattern) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public Set<String> findLongestList(
@@ -216,12 +239,6 @@ public class Dictionary extends AbstractDictionary {
 			}
 		}
 		return longestList;
-	}
-
-	@Override
-	public ArrayList<String> addWord(String newWord) {
-		// TODO Auto-generated method stub
-		return null;
 	} 
   
 } 

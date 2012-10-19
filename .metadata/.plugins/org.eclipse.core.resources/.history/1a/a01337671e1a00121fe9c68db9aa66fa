@@ -48,7 +48,7 @@ public abstract class AbstractDictionary implements DictionaryInterface {
 	* @param wordFromPattern - an empty Set<String> 
 	* @return Map<String, Set<String>> patternTable   
 	*/
-	public abstract Map<String, Set<String>> initializeHashtable( String pattern, Set<String> wordFromPattern );
+	public Map<String, Set<String>> initializeHashtable( String pattern, Set<String> wordFromPattern ){}
 
 	
 	

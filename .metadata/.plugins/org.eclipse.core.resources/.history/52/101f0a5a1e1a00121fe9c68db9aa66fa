@@ -40,15 +40,7 @@ public abstract class AbstractDictionary implements DictionaryInterface {
 	 */
 	public abstract Set<String> getLongestList(Set<String> validWordSet, char targetChar);
 	
-	/** 
-	* Instantiates the Map<String, Set<String>> patternTable with a single key, value pair 
-	* where the key = String underscores that is the same length as the user-specified  
-	* word length; the value = an empty Set<String>. 
-	* @param pattern - a String of underscores 
-	* @param wordFromPattern - an empty Set<String> 
-	* @return Map<String, Set<String>> patternTable   
-	*/
-	public abstract Map<String, Set<String>> initializeHashtable( String pattern, Set<String> wordFromPattern );
+
 
 	
 	

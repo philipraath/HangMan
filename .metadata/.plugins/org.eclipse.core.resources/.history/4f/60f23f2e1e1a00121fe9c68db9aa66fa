@@ -198,6 +198,12 @@ public class Dictionary extends AbstractDictionary {
         return tempTable;
     }
 
+	@Override
+	public Map<String, ArrayList<String>> initializeHashtable(String pattern,
+			ArrayList<String> wordFromPattern) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public Set<String> findLongestList(
@@ -216,12 +222,6 @@ public class Dictionary extends AbstractDictionary {
 			}
 		}
 		return longestList;
-	}
-
-	@Override
-	public ArrayList<String> addWord(String newWord) {
-		// TODO Auto-generated method stub
-		return null;
 	} 
   
 } 

@@ -31,6 +31,8 @@ public interface DictionaryInterface {
 	
 	ArrayList<String> addWord( String newWord ); 
 	
+	Map<String, ArrayList<String>> initializeHashtable( String pattern, ArrayList<String> wordFromPattern );
+	
 	Map<String, Set<String>> addWord( String newWord,  
             String key, 
             Map<String, Set<String>> patternTable );  
