@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testrun name="HangmanUITest" project="HangToughGit" tests="4" started="4" failures="0" errors="0" ignored="0">
-  <testsuite name="Hangman.HangmanUITest" time="15.592">
-    <testcase name="askGuessTest" classname="Hangman.HangmanUITest" time="8.542"/>
-    <testcase name="askGuessLimitTest" classname="Hangman.HangmanUITest" time="1.869"/>
-    <testcase name="askWordLengthTest" classname="Hangman.HangmanUITest" time="2.629"/>
-    <testcase name="askNewGameTest" classname="Hangman.HangmanUITest" time="2.552"/>
-  </testsuite>
-</testrun>
