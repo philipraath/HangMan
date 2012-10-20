@@ -282,20 +282,20 @@ public class DictionaryTest {
     }
     
     @Test 
-    public void testAddKeyValuePair()
-    {
-    	Dictionary test = new Dictionary();
-    	Map<String, Set<String>> thisTestList = testTable2;
-    	Map<String, Set<String>> newKeyValuePair = new Hashtable<String, Set<String>>();
-    	Set<String> newValueSet = new TreeSet<String>();
-    	newValueSet.add("value");
-    	newKeyValuePair.put("test", newValueSet);
-    	Map<String, Set<String>> actualReturnedMap = new Hashtable<String, Set<String>>();
-    	actualReturnedMap = test.addKeyValuePair(thisTestList, newKeyValuePair);
-    	assertNotNull(actualReturnedMap);
-    	assert(testTable2 != actualReturnedMap);
-    	assert(actualReturnedMap.keySet().contains("test"));
-    }
+//    public void testAddKeyValuePair()
+//    {
+//    	Dictionary test = new Dictionary();
+//    	Map<String, Set<String>> thisTestList = testTable2;
+//    	Map<String, Set<String>> newKeyValuePair = new Hashtable<String, Set<String>>();
+//    	Set<String> newValueSet = new TreeSet<String>();
+//    	newValueSet.add("value");
+//    	newKeyValuePair.put("test", newValueSet);
+//    	Map<String, Set<String>> actualReturnedMap = new Hashtable<String, Set<String>>();
+//    	actualReturnedMap = test.addKeyValuePair(thisTestList, newKeyValuePair);
+//    	assertNotNull(actualReturnedMap);
+//    	assert(testTable2 != actualReturnedMap);
+//    	assert(actualReturnedMap.keySet().contains("test"));
+//    }
     
     @Test
     public void testNewSortedSet()

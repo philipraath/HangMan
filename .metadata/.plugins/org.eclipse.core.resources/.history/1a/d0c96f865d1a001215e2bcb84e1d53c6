@@ -252,19 +252,19 @@ public class DictionaryTest {
         assertEquals( dummyTable, testTable ); 
     } 
       
-    @Test
-    public void testNewKeyValuePair() 
-    { 
-        Dictionary test = new Dictionary(); 
-        String key  = "-a---"; 
-        String patternWord = "taint"; 
-        Set<String> testSet = new TreeSet<String>(); 
-        Map<String, Set<String>> dummyTable = new Hashtable<String, Set<String>>(); 
-        dummyTable.put( key, testSet ); 
-        dummyTable.get( key ).add( patternWord ); 
-        testTable = test.newKeyValuePair( key, patternWord ); 
-        assertEquals( dummyTable, testTable ); 
-    } 
+//    @Test
+//    public void testNewKeyValuePair() 
+//    { 
+//        Dictionary test = new Dictionary(); 
+//        String key  = "-a---"; 
+//        String patternWord = "taint"; 
+//        Set<String> testSet = new TreeSet<String>(); 
+//        Map<String, Set<String>> dummyTable = new Hashtable<String, Set<String>>(); 
+//        dummyTable.put( key, testSet ); 
+//        dummyTable.get( key ).add( patternWord ); 
+//        testTable = test.newKeyValuePair( key, patternWord ); 
+//        assertEquals( dummyTable, testTable ); 
+//    } 
     
     
     @Test 
@@ -295,7 +295,7 @@ public class DictionaryTest {
     	assertNotNull(actualReturnedMap);
     	assert(testTable2 != actualReturnedMap);
     	assert(actualReturnedMap.keySet().contains("test"));
-    }
+//    }
     
     @Test
     public void testNewSortedSet()

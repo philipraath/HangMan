@@ -1,254 +1,258 @@
-import java.io.InputStream; 
-import java.io.InputStreamReader; 
-import java.io.LineNumberReader; 
-import java.io.Reader; 
-import java.util.ArrayList; 
-import java.util.Hashtable; 
-import java.util.Iterator; 
-import java.util.List; 
-import java.util.Map; 
-import java.util.Random;
-import java.util.Set; 
-import java.util.SortedSet;
-import java.util.TreeSet; 
-  
-public class Dictionary extends AbstractDictionary { 
-  
-    Set<String> dictionary = new TreeSet<String>(); 
-    Set<String> validWordSet = new TreeSet<String>(); 
-    Map<String, Set<String>> patternTable; 
-      
-      
-    public Dictionary(){ 
-        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("dictionary.txt"); 
-        Reader reader = new InputStreamReader(inputStream); 
-        LineNumberReader lineReader = new LineNumberReader(reader); 
-          
+import java.io.InputStream;  
+import java.io.InputStreamReader;  
+import java.io.LineNumberReader;  
+import java.io.Reader;  
+import java.util.ArrayList;  
+import java.util.Hashtable;  
+import java.util.Iterator;  
+import java.util.Map;  
+import java.util.Random; 
+import java.util.Set;  
+import java.util.SortedSet; 
+import java.util.TreeSet;  
+    
+public class Dictionary extends AbstractDictionary {  
+    
+    Set<String> dictionary = new TreeSet<String>();  
+    Set<String> validWordSet = new TreeSet<String>();  
+    Map<String, Set<String>> patternTable = new Hashtable<String, Set<String>>();  
+        
+        
+    public Dictionary(){  
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("dictionary.txt");  
+        Reader reader = new InputStreamReader(inputStream);  
+        LineNumberReader lineReader = new LineNumberReader(reader);  
+            
         try
-        { 
-            String line = null; 
-            while (( line = lineReader.readLine()) != null){ 
-                dictionary.add(line); 
-            } 
-        } 
-        catch(Exception e) 
-        { 
-            System.err.println(e.getMessage()); 
-        } 
-    } 
-      
-    public static void main(String[] args){ 
-        Dictionary testDictionary = new Dictionary(); 
-        Iterator<String> iterator = testDictionary.dictionary.iterator(); 
-        int maxLength = 0; 
-        while(iterator.hasNext()){ 
-            if(iterator.next().length()>maxLength) 
-            { 
-                maxLength = iterator.next().length(); 
-            } 
-        } 
-          
-    } 
+        {  
+            String line = null;  
+            while (( line = lineReader.readLine()) != null){  
+                dictionary.add(line);  
+            }  
+        }  
+        catch(Exception e)  
+        {  
+            System.err.println(e.getMessage());  
+        }  
+    }  
+        
+    public static void main(String[] args){  
+        Dictionary testDictionary = new Dictionary();  
+        Iterator<String> iterator = testDictionary.dictionary.iterator();  
+        int maxLength = 0;  
+        while(iterator.hasNext()){  
+            if(iterator.next().length()>maxLength)  
+            {  
+                maxLength = iterator.next().length();  
+            }  
+        }  
+            
+    }  
     @Override
-    public Set<String> getWordSet(int wordLength) throws IllegalArgumentException  
-    { 
-        int longestWord = lengthLongestWord(dictionary); 
-        if(wordLength>0 && wordLength<longestWord ) 
-        { 
-            validWordSet = new TreeSet<String>(); 
-            Iterator<String> iterator = dictionary.iterator(); 
-            String word = null; 
-            while(iterator.hasNext()){ 
-                word = iterator.next(); 
-                if(word.length()==wordLength){ 
-                    validWordSet.add(word); 
-                      
-                } 
-            } 
-            return validWordSet; 
-        } 
+    public Set<String> getWordSet(int wordLength) throws IllegalArgumentException   
+    {  
+        int longestWord = lengthLongestWord(dictionary);  
+        if(wordLength>0 && wordLength<longestWord )  
+        {  
+            Iterator<String> iterator = dictionary.iterator();  
+            String word = null;  
+            while(iterator.hasNext()){  
+                word = iterator.next();  
+                if(word.length()==wordLength){  
+                    validWordSet.add(word);  
+                        
+                }  
+            }  
+            return validWordSet;  
+        }  
         else
-        { 
-            throw new IllegalArgumentException("Please enter a word length between 0 and " + longestWord); 
-        } 
-    } 
-  
+        {  
+            throw new IllegalArgumentException("Please enter a word length between 0 and " + longestWord);  
+        }  
+    }  
+    
     @Override
-    public String selectWord(Set<String> validWordSet) { 
-        int randomNumber = generateRandomNumber(validWordSet); 
-        String selectedWord = (String) validWordSet.toArray()[randomNumber]; 
-        return selectedWord; 
-    } 
-      
+    public String selectWord(Set<String> validWordSet) {  
+        int randomNumber = generateRandomNumber(validWordSet);  
+        String selectedWord = (String) validWordSet.toArray()[randomNumber];  
+        return selectedWord;  
+    }  
+        
     @Override
-    public int lengthLongestWord( Set<String> dictionary ) { 
-        int maxWordLength = 0; 
-        Iterator<String> iterator = dictionary.iterator(); 
-        while( iterator.hasNext() ) { 
-            int currLength = iterator.next().length(); 
-            if ( currLength > maxWordLength ) { 
-                maxWordLength = currLength; 
-            } 
-        } 
-        return maxWordLength; 
-    } 
-      
-    public int generateRandomNumber(Set<String> validWordSet){ 
-        double randomNumberDouble = Math.random(); 
-        int randomNumber = (int) (randomNumberDouble * (validWordSet.size()-1)); 
-        return randomNumber; 
-    } 
-      
-    public void setDictionary(Set<String> dictionary){ 
-        this.dictionary = dictionary; 
-    } 
-      
-    public Set<String> getDictionary(){ 
-        return dictionary; 
-    } 
-  
-    @Override
-    public Set<String> getLongestList(Set<String> validWordSet, char targetChar) { 
-        // TODO Auto-generated method stub 
-        return null; 
-    } 
-  
+    public int lengthLongestWord( Set<String> dictionary ) {  
+        int maxWordLength = 0;  
+        Iterator<String> iterator = dictionary.iterator();  
+        while( iterator.hasNext() ) {  
+            int currLength = iterator.next().length();  
+            if ( currLength > maxWordLength ) {  
+                maxWordLength = currLength;  
+            }  
+        }  
+        return maxWordLength;  
+    }  
+        
+    public int generateRandomNumber(Set<String> validWordSet){  
+        double randomNumberDouble = Math.random();  
+        int randomNumber = (int) (randomNumberDouble * (validWordSet.size()-1));  
+        return randomNumber;  
+    }  
+        
+    public void setDictionary(Set<String> dictionary){  
+        this.dictionary = dictionary;  
+    }  
+        
     /** 
-     * Adds a String to a Set<String> referenced by a key parameter in the 
-     * Map<String, Set<String>> parameter.  
-     * @param newWord - String to be added to the Map<String, Set<String>> 
-     * @param key - String identifying the key that references the target Set<String> 
-     * @param patternTable - Map<String, Set<String>> to which the newWord will be added. 
-     * @return Map<String, Set<String>> - the updated patternTable 
+     * Getter for the complete set of words from the dictionary file. 
+     * @return Set<String> the dictionary 
+     */
+    public Set<String> getDictionary(){  
+        return dictionary;  
+    }  
+    
+    @Override
+    public Set<String> getLongestList(Set<String> validWordSet, char targetChar) {  
+        // TODO Auto-generated method stub  
+        return null;  
+    }  
+    
+    /**  
+     * Adds a String to a Set<String> referenced by a key parameter in the  
+     * Map<String, Set<String>> parameter.   
+     * @param newWord - String to be added to the Map<String, Set<String>>  
+     * @param key - String identifying the key that references the target Set<String>  
+     * @param patternTable - Map<String, Set<String>> to which the newWord will be added.  
+     * @return Map<String, Set<String>> - the updated patternTable  
      */
     @Override
-    public Map<String, Set<String>> addWord(String newWord,  
-                                            String key, 
-                                            Map<String, Set<String>> patternTable ) 
-    { 
-        patternTable.get( key ).add( newWord ); 
-        return patternTable; 
-    } 
-  
-    /** 
-     * Returns a String containing a pattern of underscores and the guessed char.  
-     * @param currentGuess - char passed in as a guess from the user. 
-     * @param currentValidWord - String passed from the valid word set. 
-     * @return pattern of underscores and the guessed char. 
+    public Map<String, Set<String>> addWord(String newWord,   
+                                            String key,  
+                                            Map<String, Set<String>> patternTable )  
+    {  
+        patternTable.get( key ).add( newWord );  
+        return patternTable;  
+    }  
+    
+    /**  
+     * Returns a String containing a pattern of hyphens and the guessed char.   
+     * @param currentGuess - char passed in as a guess from the user.  
+     * @param currentValidWord - String passed from the valid word set.  
+     * @return pattern of hyphens and the guessed char.  
      */
     @Override
-    public String generatePattern(char currentGuess, String currentValidWord) { 
-        StringBuilder str = new StringBuilder(); 
-        char[] array = currentValidWord.toCharArray(); 
-        int length = array.length; 
-        for( int i = 0; i < length; i++ ) 
-        { 
-            if( array[i] == currentGuess )  
-            { 
-                str.append( currentGuess ); 
-            } 
+    public String generatePattern(char currentGuess, String currentValidWord) {  
+        StringBuilder str = new StringBuilder();  
+        char[] array = currentValidWord.toCharArray();  
+        int length = array.length;  
+        for( int i = 0; i < length; i++ )  
+        {  
+            if( array[i] == currentGuess )   
+            {  
+                str.append( currentGuess );  
+            }  
             else
-            { 
-                str.append( '-' ); 
-            } 
-        } 
-        return str.toString(); 
-    } 
-  
-    /** 
-     * Instantiates the Map<String, Set<String>> patternTable with a single key, value pair 
-     * where the key = String underscores that is the same length as the user-specified  
-     * word length; the value = an empty Set<String>. 
-     * @param pattern - a String of underscores 
-     * @param wordFromPattern - an empty Set<String> 
-     * @return Map<String, Set<String>> patternTable   
+            {  
+                str.append( '-' );  
+            }  
+        }  
+        return str.toString();  
+    }  
+    
+    /**  
+     * Instantiates the Map<String, Set<String>> patternTable with a single key, value pair  
+     * where the key = String hyphens of same length as the user-specified   
+     * word length; the value = an empty Set<String>.  
+     * @param pattern - a String of underscores  
+     * @param patternSet - an empty Set<String>  
+     * @return Map<String, Set<String>> patternTable    
      */
     @Override
-    public Map<String, Set<String>> initializeHashtable(String pattern, 
-                                                        Set<String> wordFromPattern)  
-    { 
-        patternTable = new Hashtable<String, Set<String>>(); 
-        patternTable.put(pattern, wordFromPattern); 
-        return patternTable; 
-    } 
-  
-    /** 
-     * Adds a new key-value pair to the Map<String, Set<String>> patternTable. 
-     * @param pattern - String pattern of underscores and a target char 
-     * @param wordFromPattern - a word that fits the pattern 
-     * @return the updated Map<String, Set<String>> 
+    public Map<String, Set<String>> initializeHashtable(String pattern,  
+                                                        Set<String> patternSet)   
+    {  
+        patternTable.put(pattern, patternSet);  
+        return patternTable;  
+    }  
+    
+    /**  
+     * Adds a new key-value pair to the Map<String, Set<String>> patternTable.  
+     * @param pattern - String pattern of underscores and a target char  
+     * @param patternSet - a word that fits the pattern  
+     * @return the updated Map<String, Set<String>>  
      */ 
     @Override
-    public Map<String, Set<String>> newKeyValuePair(String pattern, 
-                                                    String wordFromPattern) 
-    { 
-        Set<String> patternSet = new TreeSet<String>(); 
-        patternSet.add( wordFromPattern ); 
-        patternTable.put(pattern, patternSet); 
-        return patternTable; 
+    public Map<String, Set<String>> newKeyValuePair(String pattern,  
+                                                    String patternWord)  
+    {  
+        Set<String> patternSet = new TreeSet<String>();  
+        patternSet.add( patternWord );  
+        patternTable.put(pattern, patternSet);  
+        return patternTable;  
+    }  
+    
+    @Override
+    public Map<String, Set<String>> addKeyValuePair(  
+                                Map<String, Set<String>> patternTable,  
+                                Map<String, Set<String>> newKeyValuePair) {  
+        Map<String, Set<String>> tempTable = new Hashtable<String, Set<String>>(); 
+        tempTable = patternTable; 
+        tempTable.putAll(newKeyValuePair); 
+        return tempTable; 
+    } 
+  
+  
+    @Override
+    public Set<String> findLongestList( 
+            Map<String, Set<String>> patternTable) { 
+        Set<String> longestList = new TreeSet<String>(); 
+        Set<String> keySet = patternTable.keySet(); 
+        Random randomBoolean = new Random(); 
+        for (String key : keySet){ 
+            if( patternTable.get(key).size()>longestList.size()){ 
+                longestList = patternTable.get(key); 
+            } 
+            else if (patternTable.get(key).size()==longestList.size()){ 
+                if(randomBoolean.nextBoolean()){ 
+                    longestList = patternTable.get(key); 
+                } 
+            } 
+        } 
+        return longestList; 
     } 
   
     @Override
-    public Map<String, Set<String>> addKeyValuePair( 
-                                Map<String, Set<String>> patternTable, 
-                                Map<String, Set<String>> newKeyValuePair) { 
-    	Map<String, Set<String>> tempTable = new Hashtable<String, Set<String>>();
-    	tempTable = patternTable;
-    	tempTable.putAll(newKeyValuePair);
-        return tempTable;
-    }
-
-
-	@Override
-	public Set<String> findLongestList(
-			Map<String, Set<String>> patternTable) {
-		Set<String> longestList = new TreeSet<String>();
-		Set<String> keySet = patternTable.keySet();
-		Random randomBoolean = new Random();
-		for (String key : keySet){
-			if( patternTable.get(key).size()>longestList.size()){
-				longestList = patternTable.get(key);
-			}
-			else if (patternTable.get(key).size()==longestList.size()){
-				if(randomBoolean.nextBoolean()){
-					longestList = patternTable.get(key);
-				}
-			}
-		}
-		return longestList;
-	}
-
-	@Override
-	public ArrayList<String> addWord(String newWord) {
-		// TODO Auto-generated method stub
-		return null;
-	} 
-	
-	@Override
-	public Set<String> newSortedSet(String currentPattern, Set<String> wordFromPattern, char currentGuess, Set<String> currentDictionary)
-	{
-		Set<String> longestSet = new TreeSet<String>();
-		Set<String> emptySet = new TreeSet<String>();
-		Map<String, Set<String>> patternTable = initializeHashtable(currentPattern, emptySet);
-		for(String word : currentDictionary){
-			String generatedPattern = generatePattern(currentGuess, word);
-			if(generatedPattern.equals(currentPattern)){
-				this.patternTable = addWord(word, currentPattern, patternTable);
-			}
-			else if(!(patternTable.keySet().contains(generatedPattern)))
-			{
-				Map<String, Set<String>> newKeyValuePair = newKeyValuePair(generatedPattern, word);
-				this.patternTable = addKeyValuePair(this.patternTable, newKeyValuePair);
-			}
-//			else
-//			{
-//				Set<String> newWord = new TreeSet<String>();
-//				newWord.add(word);
-//				this.patternTable = addWord(word, generatedPattern, patternTable);
-//			}
-		}
-		longestSet = findLongestList(patternTable);
-		return longestSet;
-	}
-  
-} 
+    public ArrayList<String> addWord(String newWord) { 
+        // TODO Auto-generated method stub 
+        return null; 
+    }  
+      
+    @Override
+    public Set<String> newSortedSet(String currentPattern,  
+                                    Set<String> patternSet,  
+                                    char currentGuess,  
+                                    Set<String> currentDictionary) 
+    { 
+        Set<String> longestSet = new TreeSet<String>(); 
+        Set<String> emptySet = new TreeSet<String>(); 
+        Map<String, Set<String>> patternTable = initializeHashtable(currentPattern, emptySet); 
+        for(String word : currentDictionary){ 
+            String generatedPattern = generatePattern(currentGuess, word); 
+            if(generatedPattern.equals(currentPattern)){ 
+                this.patternTable = addWord(word, currentPattern, patternTable); 
+            } 
+            else if(!(patternTable.keySet().contains(generatedPattern))) 
+            { 
+                Map<String, Set<String>> newKeyValuePair = newKeyValuePair(generatedPattern, word); 
+                this.patternTable = addKeyValuePair(this.patternTable, newKeyValuePair); 
+            } 
+//          else 
+//          { 
+//              Set<String> newWord = new TreeSet<String>(); 
+//              newWord.add(word); 
+//              this.patternTable = addWord(word, generatedPattern, patternTable); 
+//          } 
+        } 
+        longestSet = findLongestList(patternTable); 
+        return longestSet; 
+    } 
+    
+}

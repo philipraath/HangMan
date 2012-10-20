@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="DictionaryTest" project="HangToughGit" tests="10" started="10" failures="0" errors="0" ignored="0">
+  <testsuite name="DictionaryTest" time="2.138">
+    <testcase name="lengthLongestWordTest" classname="DictionaryTest" time="0.321"/>
+    <testcase name="getWordSetTest" classname="DictionaryTest" time="0.244"/>
+    <testcase name="selectWordTest" classname="DictionaryTest" time="0.141"/>
+    <testcase name="generateRandomNumberTest" classname="DictionaryTest" time="0.206"/>
+    <testcase name="testAddWord" classname="DictionaryTest" time="0.212"/>
+    <testcase name="testGeneratePattern" classname="DictionaryTest" time="0.154"/>
+    <testcase name="testInitializeHashtable" classname="DictionaryTest" time="0.202"/>
+    <testcase name="testFindLongestList" classname="DictionaryTest" time="0.154"/>
+    <testcase name="testAddKeyValuePair" classname="DictionaryTest" time="0.236"/>
+    <testcase name="testNewSortedSet" classname="DictionaryTest" time="0.267"/>
+  </testsuite>
+</testrun>

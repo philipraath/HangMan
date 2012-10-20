@@ -24,7 +24,7 @@ public class DictionaryTest {
     @Before
     public void setUp(){ 
         validWordSet = new TreeSet<String>(); 
-        validWordSet.add("treat"); 
+        validWordSet.add("three"); 
         validWordSet.add("trust"); 
         validWordSet.add("steal"); 
         validWordSet.add("fired"); 
